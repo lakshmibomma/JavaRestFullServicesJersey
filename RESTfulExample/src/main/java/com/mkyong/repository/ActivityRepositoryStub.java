@@ -8,6 +8,10 @@ import com.mkyong.model.User;
 
 public class ActivityRepositoryStub implements ActivityRepository 
 {
+	public void delete(String activityId) {
+		//delete from activity where activityId = ""
+	}
+	
 	public Activity update(Activity activity)
 	{		
 		//Search the database to see if we have an activity with that id already exists

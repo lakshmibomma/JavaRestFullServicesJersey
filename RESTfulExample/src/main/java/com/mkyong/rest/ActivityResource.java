@@ -3,6 +3,7 @@ package com.mkyong.rest;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -125,4 +126,16 @@ public class ActivityResource
 
 			return Response.ok().entity(activity).build();
 		}
+		
+		@DELETE
+		@Path("{activityId}") //http://localhost:8080/TestJava/rest/activities/activityId
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML}) 
+		public Response delete(@PathParam("activityId") String activityId)  ////http://localhost:8080/TestJava/rest/activities/1234
+		{
+			activityRepository.delete(activityId);
+			return Response.ok().build();
+
+		}
+		
 }
