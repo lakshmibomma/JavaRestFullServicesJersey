@@ -1,0 +1,8 @@
+com/mkyong/client/ActivityClient.class
+com/mkyong/model/Activity.class
+com/mkyong/repository/ActivityRepository.class
+com/mkyong/rest/App.class
+com/mkyong/model/User.class
+com/mkyong/repository/ActivityRepositoryStub.class
+com/mkyong/rest/ActivityResource.class
+com/mkyong/rest/MyMain.class
