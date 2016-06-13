@@ -8,8 +8,21 @@ import com.mkyong.model.User;
 
 public class ActivityRepositoryStub implements ActivityRepository 
 {
-	public void create(Activity activity) {
-		// TODO Auto-generated method stub
+	public Activity update(Activity activity)
+	{		
+		//Search the database to see if we have an activity with that id already exists
+		//select *from Activity where id =?
+		//if rs size ==0
+		//insert into Activity table
+		//else
+		//update the Activity
+		
+		return activity;
+		
+		
+	}
+	public void create(Activity activity)
+	{
 		//Should issue a insert statement to the Database
 		
 	}
@@ -37,7 +50,10 @@ public class ActivityRepositoryStub implements ActivityRepository
 		
 	}
 	public Activity findActivity(String activityId) {
-		
+		 if (activityId.equals("7777"))
+		 {
+			 return null;
+		 }
 		Activity activity1 = new Activity();
 		activity1.setDescription("Shopping");
 		activity1.setDuration(55);

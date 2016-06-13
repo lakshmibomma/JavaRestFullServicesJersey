@@ -5,16 +5,20 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 
 import com.mkyong.model.Activity;
 import com.mkyong.model.User;
 import com.mkyong.repository.ActivityRepository;
 import com.mkyong.repository.ActivityRepositoryStub;
+import com.sun.jersey.api.client.ClientResponse.Status;
 
 @Path("activities") //http://localhost:8080/TestJava/rest/activities
 public class ActivityResource
@@ -73,9 +77,24 @@ public class ActivityResource
 	@Produces({MediaType.APPLICATION_JSON})
 	
 	@Path("{activityId}") //http://localhost:8080/TestJava/rest/activities/activityId
-	public Activity getActivity(@PathParam("activityId") String activityId)  ////http://localhost:8080/TestJava/rest/activities/1234
+	public Response getActivity(@PathParam("activityId") String activityId)  ////http://localhost:8080/TestJava/rest/activities/1234
 	{
-		return activityRepository.findActivity(activityId);
+		if(activityId == null || activityId.length()<4)
+		{
+		
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		System.out.println("Gettinga ctivity ID: "+ activityId);
+		
+		Activity activity = activityRepository.findActivity(activityId);
+		
+		if(activity == null)
+		{
+			return Response.status(Status.NOT_FOUND).build();
+
+		}
+		return Response.ok().entity(activity).build();
+
 	}
 	
 	//Get specific user
@@ -90,5 +109,20 @@ public class ActivityResource
 //			return user;
 			
 			return activityRepository.findActivity(activityId).getUser();
+		}
+		
+		//PUT
+		@PUT
+		@Path("{activityId}") //http://localhost:8080/TestJava/rest/activities/activityId
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML}) 
+		
+		public Response update(Activity activity)
+		{
+			System.out.println(activity.getId());
+
+			activityRepository.update(activity);//This is for storing in Data base
+
+			return Response.ok().entity(activity).build();
 		}
 }
