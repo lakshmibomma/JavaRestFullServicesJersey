@@ -81,9 +81,6 @@ public class ActivityClient {
 		{
 			throw new RuntimeException(response.getStatus()+":there was an error on the server");
 		}
-		return (Activity) response.getEntity();
-
-//		return ((Object) response).readEntity(Activity.class);
-		
+		return (Activity) response.getEntity();		
 	}
 }

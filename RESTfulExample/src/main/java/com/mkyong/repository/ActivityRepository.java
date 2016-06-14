@@ -3,6 +3,7 @@ package com.mkyong.repository;
 import java.util.List;
 
 import com.mkyong.model.Activity;
+import com.mkyong.model.ActivitySearch;
 
 public interface ActivityRepository {
 
@@ -17,5 +18,10 @@ public interface ActivityRepository {
 
 
 	void delete(String activityId);
+
+
+	List<Activity> findByDescription(List<String> descriptions, int durationFrom, int durationTo);
+
+	List<Activity> findByConstraints(ActivitySearch search);
 
 }

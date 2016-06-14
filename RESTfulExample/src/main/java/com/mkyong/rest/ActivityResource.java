@@ -122,7 +122,7 @@ public class ActivityResource
 		{
 			System.out.println(activity.getId());
 
-			activityRepository.update(activity);//This is for storing in Data base
+			activityRepository.update(activity);//This is for updating in Data base
 
 			return Response.ok().entity(activity).build();
 		}

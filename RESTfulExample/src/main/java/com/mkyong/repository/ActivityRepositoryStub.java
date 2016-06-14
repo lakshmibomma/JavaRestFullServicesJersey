@@ -4,10 +4,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mkyong.model.Activity;
+import com.mkyong.model.ActivitySearch;
 import com.mkyong.model.User;
 
 public class ActivityRepositoryStub implements ActivityRepository 
-{
+{	
+	
+	public List<Activity> findByConstraints(ActivitySearch search) {
+		//select *from activities where description in (?,?,?) and duration >? and duration <?
+		System.out.println(search.getDurationFrom());
+		List<Activity> activities = new ArrayList<Activity>();
+				
+		Activity activity1 = new Activity();
+		activity1.setDescription("Swimming");
+		activity1.setDuration(55);
+		activity1.setId("2345");
+		activities.add(activity1);
+				
+		return activities;
+	}
+	
+	public List<Activity> findByDescription(List<String> descriptions, int durationFrom, int durationTo)
+	{
+
+		//select *from activities where description in (?,?,?) and duration >? and duration <?
+		List<Activity> activities = new ArrayList<Activity>();
+		
+		Activity activity1 = new Activity();
+		activity1.setDescription("Swimming");
+		activity1.setDuration(55);
+		activity1.setId("2345");
+		activities.add(activity1);
+		
+		return activities;
+	}
+	
 	public void delete(String activityId) {
 		//delete from activity where activityId = ""
 	}
@@ -41,7 +72,7 @@ public class ActivityRepositoryStub implements ActivityRepository
 		List<Activity> activities = new ArrayList<Activity>();
 		
 		Activity activity1 = new Activity();
-		activity1.setDescription("Shopping");
+		activity1.setDescription("Running");
 		activity1.setDuration(55);
 		activities.add(activity1);
 		
