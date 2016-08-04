@@ -1,5 +1,10 @@
 package com.mkyong.repository;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,6 +88,7 @@ public class ActivityRepositoryStub implements ActivityRepository
 		activity2.setDuration(30);
 		activities.add(activity2);
 		
+		
 		return activities;
 		
 	}
@@ -102,6 +108,46 @@ public class ActivityRepositoryStub implements ActivityRepository
 		activity1.setUser(user);
 		return activity1;
 	}
+
+	public String setupDatabseConnection() throws SQLException {
+		// TODO Auto-generated method stub
+		try {
+			try {
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+
+		final String dbUrl = "jdbc:mysql://localhost:8889/JavaOne";
+	    final String username = "root";
+	    final String password = "root";
+
+		System.out.println("Welcome to Jva Platform:Working with Databses using JDBC");
+		Connection conn = DriverManager.getConnection(dbUrl, username, password);
+		System.out.println("Connection to mysql databse established successfylly");
+		
+		Statement stmt = conn.createStatement();  
+		  
+		ResultSet rs = stmt.executeQuery("select * from Employee");  
+//		String row = rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3);
+
+		while(rs.next())  
+		
+			System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
+		
+		  
+		conn.close();  
+		return  "Connection to mysql databse established successfylly";
+	}
+
 	
 	
 

@@ -11,7 +11,6 @@ import javax.ws.rs.core.UriBuilder;
 
 import com.mkyong.model.Activity;
 import com.mkyong.model.ActivitySearch;
-import com.sun.jersey.api.client.GenericType;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 

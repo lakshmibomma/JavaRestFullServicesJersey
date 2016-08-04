@@ -1,5 +1,6 @@
 package com.mkyong.rest;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -13,7 +14,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 
 import com.mkyong.model.Activity;
 import com.mkyong.model.User;
@@ -72,6 +72,16 @@ public class ActivityResource
 	{
 		return activityRepository.findAllActivities();
 	}
+	
+	@GET
+	@Path("database") //http://localhost:8080/TestJava/rest/activities/database
+	@Produces({MediaType.APPLICATION_JSON})
+	public String setDatabse() throws SQLException
+	{
+		return activityRepository.setupDatabseConnection();
+	}
+	
+	
 
 	//Get specific activity
 	@GET

@@ -16,7 +16,7 @@ import com.mkyong.model.Activity;
 import com.mkyong.model.ActivitySearch;
 import com.mkyong.repository.ActivityRepository;
 import com.mkyong.repository.ActivityRepositoryStub;
-import com.sun.jersey.api.client.GenericType;
+//import com.sun.jersey.api.client.GenericType;
 
 @Path("search/activities")
 public class ActivitySearchResource

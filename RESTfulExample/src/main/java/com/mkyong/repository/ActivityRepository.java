@@ -1,5 +1,6 @@
 package com.mkyong.repository;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.mkyong.model.Activity;
@@ -23,5 +24,8 @@ public interface ActivityRepository {
 	List<Activity> findByDescription(List<String> descriptions, int durationFrom, int durationTo);
 
 	List<Activity> findByConstraints(ActivitySearch search);
+
+	String setupDatabseConnection() throws SQLException;
+
 
 }
