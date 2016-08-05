@@ -13,9 +13,13 @@ public class DBUtil
 	
    public static Connection getConnetcion() throws SQLException 
    {
-		System.out.println("Databse created");
+	   System.out.println("Databse created");
 	   return (Connection) DriverManager.getConnection(mySqlUrl, mySqlUser, mySqlPassword);
    }
 	
-
+   public static void showErrorMessage(SQLException e)
+   {
+	   System.err.println("Error:" + e.getMessage());
+	   System.err.println("Error Code :" + e.getErrorCode());
+   }
 }
