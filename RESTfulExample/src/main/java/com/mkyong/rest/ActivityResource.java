@@ -1,5 +1,6 @@
 package com.mkyong.rest;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -76,6 +77,7 @@ public class ActivityResource
 	@GET
 	@Path("database") //http://localhost:8080/TestJava/rest/activities/database
 	@Produces({MediaType.APPLICATION_JSON})
+	@Consumes(MediaType.APPLICATION_JSON)
 	public String setDatabse() throws SQLException
 	{
 		return activityRepository.setupDatabseConnection();

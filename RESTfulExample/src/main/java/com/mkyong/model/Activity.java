@@ -40,5 +40,13 @@ public class Activity
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	public Activity()
+	{
+	  super();
+	  this.duration = 0;
+	  this.description = null;
+	  this.id = null;
+	}
 
 }

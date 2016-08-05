@@ -11,6 +11,7 @@ import java.util.List;
 import com.mkyong.model.Activity;
 import com.mkyong.model.ActivitySearch;
 import com.mkyong.model.User;
+import com.mkyong.database.DBUtil;
 
 public class ActivityRepositoryStub implements ActivityRepository 
 {	
@@ -131,7 +132,10 @@ public class ActivityRepositoryStub implements ActivityRepository
 	    final String password = "root";
 
 		System.out.println("Welcome to Jva Platform:Working with Databses using JDBC");
-		Connection conn = DriverManager.getConnection(dbUrl, username, password);
+//		Connection conn = DriverManager.getConnection(dbUrl, username, password);
+		
+		Connection conn = DBUtil.getConnetcion();
+
 		System.out.println("Connection to mysql databse established successfylly");
 		
 		Statement stmt = conn.createStatement();  
