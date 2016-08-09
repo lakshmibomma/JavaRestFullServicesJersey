@@ -8,15 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mkyong.database.DBUtil;
-import com.mkyong.database.IteratingWithResultSets;
-import com.mkyong.database.UpdatableResultSetDemo;
+import com.mkyong.database.SelectQuery;
+import com.mkyong.database.UpdateandInsertQuery;
 import com.mkyong.model.Activity;
 import com.mkyong.model.ActivitySearch;
 import com.mkyong.model.User;
 
 public class ActivityRepositoryStub implements ActivityRepository 
-{	
-	 
+{		
 
 	public List<Activity> findByConstraints(ActivitySearch search) {
 		//select *from activities where description in (?,?,?) and duration >? and duration <?
@@ -115,10 +114,9 @@ public class ActivityRepositoryStub implements ActivityRepository
 	
 	public String insertAndUpdateToTable() throws SQLException {
 		// TODO Auto-generated method stub
-		System.out.println("insert and update");
-		UpdatableResultSetDemo.update();
+		System.out.println("insertAndUpdateToTable called");
+		UpdateandInsertQuery.insert();
 
-	  
 		return "insertAndUpdateToTable";
 	}
 	
@@ -126,58 +124,15 @@ public class ActivityRepositoryStub implements ActivityRepository
 	public String iterateThroughDatabase() throws SQLException
 	{
 	    System.out.println("iterateThroughDatabase called");
-		IteratingWithResultSets.getTableResults();
-
-	  
+		SelectQuery.getTableResults();
 		return "IteratingWithResultSets";
-		
 	}
-
-	public String setupDatabseConnection() throws SQLException
-	{
+	
+	public String updateTable() throws SQLException {
 		// TODO Auto-generated method stub
-		Connection conn = null;
-
-		try {
-			try {
-				Class.forName("com.mysql.jdbc.Driver").newInstance();
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			conn = DBUtil.getConnetcion();
-			System.out.println("Called Connection to mysql databse established successfylly");
-			Statement stmt = conn.createStatement();  
-			ResultSet rs = stmt.executeQuery("select * from Employee");  
-//			String row = rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3);
-
-			while(rs.next())  
-			
-				System.out.println("++++++"+rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			DBUtil.showErrorMessage(e);
-			e.printStackTrace();
-		}  
-		finally
-		{
-			if (conn != null)
-			{
-				conn.close();  
-			}
-		}
-		return  "Connection to mysql databse established successfylly";
+		System.out.println("updateTable called");
+		UpdateandInsertQuery.update();
+		return "updated";
 	}
-
-	
-	
 
 }

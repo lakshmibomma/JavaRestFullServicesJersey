@@ -12,7 +12,9 @@ public class DBUtil
 	private static final String mySqlUrl = "jdbc:mysql://localhost:8889/JavaOne";
 	
    public static Connection getConnetcion() throws SQLException 
-   {
+   {	  
+	   DatabaseInstance.createDatabaseInstance();
+
 	   System.out.println("Databse created");
 	   return (Connection) DriverManager.getConnection(mySqlUrl, mySqlUser, mySqlPassword);
    }

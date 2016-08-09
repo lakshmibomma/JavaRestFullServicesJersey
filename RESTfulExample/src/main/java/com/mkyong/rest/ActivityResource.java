@@ -65,6 +65,15 @@ public class ActivityResource
 	}
 	
 	@GET
+	@Path("Update") //http://localhost:8080/TestJava/rest/activities/Update
+	@Produces({MediaType.APPLICATION_JSON})
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String updateToRow() throws SQLException
+	{
+		return activityRepository.updateTable();
+	}
+	
+	@GET
 	@Path("insertAndUpdate") //http://localhost:8080/TestJava/rest/activities/insertAndUpdate
 	@Produces({MediaType.APPLICATION_JSON})
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -83,14 +92,6 @@ public class ActivityResource
 		return activityRepository.findAllActivities();
 	}
 	
-	@GET
-	@Path("database") //http://localhost:8080/TestJava/rest/activities/database
-	@Produces({MediaType.APPLICATION_JSON})
-	@Consumes(MediaType.APPLICATION_JSON)
-	public String setDatabse() throws SQLException
-	{
-		return activityRepository.setupDatabseConnection();
-	}
 	
 	@GET
 	@Path("iterate") //http://localhost:8080/TestJava/rest/activities/iterate
@@ -100,9 +101,6 @@ public class ActivityResource
 	{
 		return activityRepository.iterateThroughDatabase();
 	}
-	
-	
-	
 	
 
 	//Get specific activity

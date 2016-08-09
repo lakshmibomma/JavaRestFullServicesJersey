@@ -25,11 +25,12 @@ public interface ActivityRepository {
 
 	List<Activity> findByConstraints(ActivitySearch search);
 
-	String setupDatabseConnection() throws SQLException;
 
 	String iterateThroughDatabase() throws SQLException;
 
 	String insertAndUpdateToTable() throws SQLException;
+
+	String updateTable() throws SQLException;
 
 
 }

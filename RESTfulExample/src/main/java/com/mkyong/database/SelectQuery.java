@@ -6,27 +6,15 @@ import java.sql.Statement;
 
 import com.mysql.jdbc.Connection;
 
-public class IteratingWithResultSets {
+public class SelectQuery {
 	
 	   public static void getTableResults() throws SQLException 
 	   {
-	
+		   System.out.println("came here to select");
+
 		Connection conn = null;
 		Statement stmt  =  null;
 		ResultSet rs = null;
-		
-		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		try
 		{
 			conn = DBUtil.getConnetcion();
