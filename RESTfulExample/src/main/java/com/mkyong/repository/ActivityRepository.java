@@ -1,6 +1,5 @@
 package com.mkyong.repository;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -27,6 +26,10 @@ public interface ActivityRepository {
 	List<Activity> findByConstraints(ActivitySearch search);
 
 	String setupDatabseConnection() throws SQLException;
+
+	String iterateThroughDatabase() throws SQLException;
+
+	String insertAndUpdateToTable() throws SQLException;
 
 
 }

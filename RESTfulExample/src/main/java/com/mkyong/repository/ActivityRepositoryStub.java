@@ -1,21 +1,23 @@
 package com.mkyong.repository;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mkyong.database.DBUtil;
+import com.mkyong.database.IteratingWithResultSets;
+import com.mkyong.database.UpdatableResultSetDemo;
 import com.mkyong.model.Activity;
 import com.mkyong.model.ActivitySearch;
 import com.mkyong.model.User;
-import com.mkyong.database.DBUtil;
 
 public class ActivityRepositoryStub implements ActivityRepository 
 {	
-	
+	 
+
 	public List<Activity> findByConstraints(ActivitySearch search) {
 		//select *from activities where description in (?,?,?) and duration >? and duration <?
 		System.out.println(search.getDurationFrom());
@@ -109,6 +111,27 @@ public class ActivityRepositoryStub implements ActivityRepository
 		activity1.setUser(user);
 		return activity1;
 	}
+	
+	
+	public String insertAndUpdateToTable() throws SQLException {
+		// TODO Auto-generated method stub
+		System.out.println("insert and update");
+		UpdatableResultSetDemo.update();
+
+	  
+		return "insertAndUpdateToTable";
+	}
+	
+	
+	public String iterateThroughDatabase() throws SQLException
+	{
+	    System.out.println("iterateThroughDatabase called");
+		IteratingWithResultSets.getTableResults();
+
+	  
+		return "IteratingWithResultSets";
+		
+	}
 
 	public String setupDatabseConnection() throws SQLException
 	{
@@ -129,14 +152,14 @@ public class ActivityRepositoryStub implements ActivityRepository
 				e.printStackTrace();
 			}
 			conn = DBUtil.getConnetcion();
-			System.out.println("Connection to mysql databse established successfylly");
+			System.out.println("Called Connection to mysql databse established successfylly");
 			Statement stmt = conn.createStatement();  
 			ResultSet rs = stmt.executeQuery("select * from Employee");  
 //			String row = rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3);
 
 			while(rs.next())  
 			
-				System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
+				System.out.println("++++++"+rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
 			
 			
 		} catch (SQLException e) {
@@ -146,7 +169,10 @@ public class ActivityRepositoryStub implements ActivityRepository
 		}  
 		finally
 		{
+			if (conn != null)
+			{
 				conn.close();  
+			}
 		}
 		return  "Connection to mysql databse established successfylly";
 	}

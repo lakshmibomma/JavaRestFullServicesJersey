@@ -64,6 +64,15 @@ public class ActivityResource
 		
 	}
 	
+	@GET
+	@Path("insertAndUpdate") //http://localhost:8080/TestJava/rest/activities/insertAndUpdate
+	@Produces({MediaType.APPLICATION_JSON})
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String insertandUpdateToDatabaseTable() throws SQLException
+	{
+		return activityRepository.insertAndUpdateToTable();
+	}
+	
 
 	//Get all activities
 	// Sending 2 headers both xml and json--test in postman chrome--see the xml and json output
@@ -82,6 +91,17 @@ public class ActivityResource
 	{
 		return activityRepository.setupDatabseConnection();
 	}
+	
+	@GET
+	@Path("iterate") //http://localhost:8080/TestJava/rest/activities/iterate
+	@Produces({MediaType.APPLICATION_JSON})
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String iterateThroughDatabaseTable() throws SQLException
+	{
+		return activityRepository.iterateThroughDatabase();
+	}
+	
+	
 	
 	
 
